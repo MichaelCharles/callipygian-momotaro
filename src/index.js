@@ -57,15 +57,22 @@ class App extends React.Component {
     this.setState({ results });
   }
 
+  handleKeyDown(key) {
+    if (key === 'Enter') {
+      this.handleAdd();
+    }
+  }
+
   render() {
     const { limit, phrases, phrase, results } = this.state;
     return (
-      <div>
+      <div class="App">
         <h1>Callipygian Momotaro</h1>
         <input
           type="text"
           value={phrase}
           onChange={e => this.onPhraseChange(e.target.value)}
+          onKeyDown={e => this.handleKeyDown(e.key)}
         />
         <button
           onClick={() => {
@@ -106,6 +113,7 @@ class App extends React.Component {
             -
           </button>
         </div>
+        <br />
         <div>
           <button
             onClick={() => {
