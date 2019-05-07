@@ -1,0 +1,9 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.clickable-text {
+  color: rgb(255, 103, 222);
+  cursor: pointer;
+}
