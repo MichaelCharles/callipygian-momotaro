@@ -3,18 +3,50 @@ import ReactDOM from "react-dom";
 
 import "./styles.css";
 
+const setCookie = function setCookie(cname, cvalue, exdays = 365) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + JSON.stringify(cvalue) + ";" + expires + ";path=/";
+}
+
+const getCookie = function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return JSON.parse(c.substring(name.length, c.length));
+    }
+  }
+  return undefined;
+}
+
 class App extends React.Component {
   state = {
     phrase: "",
-    phrases: ["elephant", "scray", "coffee", "tofu"],
+    phrases: [],
     limit: 1,
     results: []
   };
+
+  componentWillMount() {
+    let phrasesToLoad = getCookie('phrases')
+    if (typeof phrasesToLoad === 'undefined') {
+      phrasesToLoad = ['tofu', 'coffee', 'callipygian', 'Momotaro']
+    }
+    this.setState({phrases: phrasesToLoad});
+  }
 
   handleAdd() {
     let { phrases, phrase } = this.state;
     phrases.push(phrase);
     this.setState({ phrases: phrases, phrase: "" });
+    setCookie('phrases', this.state.phrases)
   }
 
   onPhraseChange(newPhrase) {
@@ -31,6 +63,7 @@ class App extends React.Component {
       limit = phrases.length;
     }
     this.setState({ limit });
+    setCookie('phrases', this.state.phrases)
   }
 
   increment() {
@@ -66,7 +99,7 @@ class App extends React.Component {
   render() {
     const { limit, phrases, phrase, results } = this.state;
     return (
-      <div class="App">
+      <div className="App">
         <h1>Callipygian Momotaro</h1>
         <input
           type="text"
@@ -97,7 +130,7 @@ class App extends React.Component {
           ))}
         </ul>
         <div>
-          Limit: {limit} &nbsp;
+          Limit: {phrases.length === 0 ? 0 : limit} &nbsp;
           <button
             onClick={() => {
               this.increment();

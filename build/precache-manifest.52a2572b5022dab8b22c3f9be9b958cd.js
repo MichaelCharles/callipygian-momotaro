@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "df9854885cc0b8a75741",
+    "revision": "5e5ea43e593331c870ba",
     "url": "/callipygian-momotaro/static/css/main.c750df6d.chunk.css"
   },
   {
-    "revision": "df9854885cc0b8a75741",
-    "url": "/callipygian-momotaro/static/js/main.a3226dad.chunk.js"
+    "revision": "5e5ea43e593331c870ba",
+    "url": "/callipygian-momotaro/static/js/main.5bb4a768.chunk.js"
   },
   {
     "revision": "ac978c6084dc5bc7944a",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/callipygian-momotaro/static/js/2.4cbfd1a3.chunk.js"
   },
   {
-    "revision": "f9ed06ca2f930812c32809afe4897860",
+    "revision": "b68a9ea82d52a35ceadb931db013f4dd",
     "url": "/callipygian-momotaro/index.html"
   }
 ];

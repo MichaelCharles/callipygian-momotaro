@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/callipygian-momotaro/precache-manifest.e27bcb68eca967d3ad35c364e604e283.js"
+  "/callipygian-momotaro/precache-manifest.52a2572b5022dab8b22c3f9be9b958cd.js"
 );
 
 workbox.clientsClaim();
